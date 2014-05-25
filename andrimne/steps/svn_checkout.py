@@ -1,11 +1,8 @@
+from andrimne.common import run_shell_command
 import logging
-import subprocess
 
 
 def run(cfg):
     logging.info('checking out from svn')
 
-    output = subprocess.check_output('svn update', shell=True)
-
-    for line in output.splitlines():
-        logging.info(line.decode('utf-8'))
+    run_shell_command('svn update')
