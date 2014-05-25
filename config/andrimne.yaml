@@ -1,2 +1,11 @@
 logfile: deploylog.txt
 loglevel: DEBUG
+
+step_modules:
+  - svn_checkout
+  - maven_build
+  - set_permissions
+  - upload_files
+  - redeploy
+  - stop_servers
+  - start_servers
