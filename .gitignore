@@ -1,0 +1,7 @@
+*.pyc
+
+.idea/
+dist/
+
+MANIFEST
+deploylog.txt
