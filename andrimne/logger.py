@@ -11,4 +11,8 @@ def configure(config):
     }
 
     logging.basicConfig(**log_config)
-    logging.info('logging initialized')
+    logging.info('')
+    logging.info('')
+    logging.info('')
+    logging.info('STARTING ...')
+    logging.info('')
