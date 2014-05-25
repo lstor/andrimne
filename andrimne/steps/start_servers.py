@@ -1,5 +1,5 @@
 import logging
 
 
-def run():
+def run(cfg):
     logging.info('start servers')

@@ -15,7 +15,7 @@ def main():
 
     for step in steps:
         logging.debug('executing step \'%s\'' % step.__name__)
-        step.run()
+        step.run(cfg)
 
     logging.info('elapsed time was: %s' % timer.elapsed())
 
