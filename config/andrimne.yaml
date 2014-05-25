@@ -1,5 +1,5 @@
 logfile: deploylog.txt
-loglevel: DEBUG
+loglevel: INFO
 
 step_modules:
   - svn_checkout
@@ -9,3 +9,5 @@ step_modules:
   - redeploy
   - stop_servers
   - start_servers
+
+maven_flags: -B -q -ff
