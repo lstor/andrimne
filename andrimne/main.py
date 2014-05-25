@@ -17,7 +17,7 @@ def main():
         logging.debug('executing step \'%s\'' % step.__name__)
         step.run(cfg)
 
-    logging.info('elapsed time was: %s' % timer.elapsed())
+    logging.info('DONE! elapsed time was %s' % timer.elapsed())
 
 
 def read_modules(cfg):
