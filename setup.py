@@ -22,7 +22,7 @@ setup(
     keywords='build deploy automate',
     packages=find_packages(exclude=['tests']),
 
-    install_requires=['PyYAML'],
+    install_requires=['PyYAML>=3.10'],
 
     classifiers=[
         'Development Status :: 3 - Alpha',
