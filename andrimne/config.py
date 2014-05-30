@@ -1,7 +1,7 @@
 from pkg_resources import resource_stream
 import yaml
 
-MAIN_CONFIG_FILE = ['andrimne', 'config/andrimne.yaml']
+MAIN_CONFIG_FILE = ['andrimne', 'configuration/andrimne.yaml']
 
 
 def read_main_configuration():

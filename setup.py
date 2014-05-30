@@ -36,7 +36,7 @@ setup(
     ],
 
     package_data={
-        'andrimne': ['config/andrimne.yaml'],
+        'andrimne': ['configuration/andrimne.yaml'],
     },
 
     entry_points={

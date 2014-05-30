@@ -4,6 +4,8 @@ loglevel: INFO
 step_modules:
   - svn_checkout
   - maven_build
+  - read_version_from_pom
+  - print_version
   - set_permissions
   - upload_files
   - redeploy
