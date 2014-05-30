@@ -11,6 +11,4 @@ SYNOPSIS
 
 Andrimne is meant to be a plug-in-enabled tool-running-platform for automating build- and deployment-related tasks.
 
-`See github for more information.`_github
-
-.. _github: http://github.com/lstor/andrimne
+`See github for more information. <http://github.com/lstor/andrimne>`_
