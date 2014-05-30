@@ -9,7 +9,7 @@ with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
 
 setup(
     name='andrimne',
-    version='0.0.1-dev',
+    version='0.0.1',
 
     description='Customizable set of tools for automating code deployment.',
     long_description=long_description,
@@ -20,7 +20,7 @@ setup(
     license='MIT',
 
     keywords='build deploy automate',
-    packages='andrimne',
+    packages=find_packages(exclude=['tests']),
 
     install_requires=['PyYAML'],
 
@@ -29,17 +29,19 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
     ],
 
-    data_files=[
-        ('andrimne.yaml', ['config/andrimne.yaml']),
-    ],
+    package_data={
+        'andrimne': ['config/andrimne.yaml'],
+    },
 
     entry_points={
         'console_scripts': [
-            'andrimne=andrimne:main',
+            'andrimne=andrimne.main:main',
         ],
     },
 )
