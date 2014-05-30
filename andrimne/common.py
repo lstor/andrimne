@@ -10,4 +10,4 @@ def run_shell_command(command, charset='utf-8'):
     try:
         logging.info('output:\n%s' % output.decode(charset).strip())
     except:
-        pass
+        logging.warning('error in logging, output from \'%s\' is missing.' % command)
