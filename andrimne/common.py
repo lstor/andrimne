@@ -8,6 +8,6 @@ def run_shell_command(command, charset='utf-8'):
     # Swallow *all* errors from logging. We really don't want to interrupt flow just because logging fails.
     # noinspection PyBroadException
     try:
-        logging.info('output:\n%s' % output.decode(charset).strip())
+        logging.info('output:\n{}'.format(output.decode(charset).strip()))
     except:
-        logging.warning('error in logging, output from \'%s\' is missing.' % command)
+        logging.warning('error in logging, output from \'{}\' is missing.'.format(command))

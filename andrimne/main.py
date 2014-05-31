@@ -17,7 +17,7 @@ def main():
 
     for step in steps:
         print_progress(cfg)
-        logging.debug('executing step \'%s\'' % step.__name__)
+        logging.debug('executing step \'{}\''.format(step.__name__))
         if not execute_step(step, cfg):
             successful = False
             break
@@ -44,9 +44,9 @@ def execute_step(step, cfg):
 
 def log_run_completed(successful, timer):
     if successful:
-        logging.info('DONE! elapsed time was %s' % timer.elapsed())
+        logging.info('DONE! elapsed time was {}'.format(timer.elapsed()))
     else:
-        logging.warning('ABORTED! elapsed time was %s' % timer.elapsed())
+        logging.warning('ABORTED! elapsed time was {}'.format(timer.elapsed()))
 
 
 def read_modules(cfg):
@@ -55,8 +55,8 @@ def read_modules(cfg):
 
 
 def step_import(module_name):
-    logging.debug('importing step \'%s\'' % module_name)
-    return __import__('andrimne.steps.%s' % module_name, fromlist='andrimne.steps')
+    logging.debug('importing step \'{}\''.format(module_name))
+    return __import__('andrimne.steps.{}'.format(module_name), fromlist='andrimne.steps')
 
 
 if __name__ == '__main__':

@@ -23,12 +23,12 @@ def prettify(elapsed):
 
 def _append_if_positive(strings, value, desc):
     if value > 0:
-        strings.append('%s %s%s' % (_readable(value), desc, '' if value == 1 else 's'))
+        strings.append('{} {}{}'.format(_readable(value), desc, '' if value == 1 else 's'))
 
 
 def _readable(value):
     if value < 1:
-        return '%.3f' % value
+        return '{0:.3f}'.format(value)
 
     value_map = {
         1: 'one',
@@ -48,4 +48,4 @@ def _readable(value):
     try:
         return value_map[int(value)]
     except KeyError:
-        return '%d' % value
+        return '{}'.format(value)

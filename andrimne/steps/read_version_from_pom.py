@@ -18,11 +18,11 @@ def run(cfg):
     try:
         find_and_store_version(cfg, version_tag_name, namespace, pom_file)
     except (IOError, ElementTree.ParseError) as e:
-        logging.error('could not read version: %s' % e)
+        logging.error('could not read version: {}'.format(e))
 
 
 def find_and_store_version(cfg, version_tag_name, namespace, pom_file):
-    version_tag = '{%s}%s' % (namespace, version_tag_name)
+    version_tag = '{{{0}}}{1}'.format(namespace, version_tag_name)
 
     root = ElementTree.parse(pom_file).getroot()
     if root.tag == version_tag:

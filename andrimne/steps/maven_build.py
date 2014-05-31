@@ -7,4 +7,4 @@ def run(cfg):
     logging.info('running maven build')
 
     flags = config_or_default(cfg, 'maven_flags', '')
-    run_shell_command('mvn %s clean install' % flags, charset='latin-1')
+    run_shell_command('mvn {} clean install'.format(flags), charset='latin-1')

@@ -11,5 +11,5 @@ def run(cfg):
     modules = config_or_default(cfg, 'code_modules', [])
 
     for module in modules:
-        filename = '%s%s/target/%s%s-%s.war' % (prefix, module, prefix, module, version)
-        run_shell_command('chmod a+rw %s' % filename)
+        filename = u'{0}{1}/target/{0}{1}-{2}.war'.format(prefix, module, version)
+        run_shell_command('chmod a+rw {}'.format(filename))
