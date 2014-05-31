@@ -4,6 +4,7 @@ import andrimne.logger as logger
 from andrimne.timer import Timer
 
 import logging
+import sys
 
 
 def main():
@@ -12,12 +13,40 @@ def main():
     logger.configure(cfg)
 
     steps = map(step_import, read_modules(cfg))
+    successful = True
 
     for step in steps:
+        print_progress(cfg)
         logging.debug('executing step \'%s\'' % step.__name__)
-        step.run(cfg)
+        if not execute_step(step, cfg):
+            successful = False
+            break
 
-    logging.info('DONE! elapsed time was %s' % timer.elapsed())
+    log_run_completed(successful, timer)
+    sys.exit(0 if successful else 1)
+
+
+def print_progress(cfg):
+    if config.config_or_default(cfg, 'verbosity', 'verbose') == 'verbose':
+        sys.stdout.write('.')
+
+
+def execute_step(step, cfg):
+    # noinspection PyBroadException
+    try:
+        result = step.run(cfg)
+        if result is None or result is True or result == 0:
+            return True
+    except Exception as e:
+        logging.error(e)
+        return False
+
+
+def log_run_completed(successful, timer):
+    if successful:
+        logging.info('DONE! elapsed time was %s' % timer.elapsed())
+    else:
+        logging.warning('ABORTED! elapsed time was %s' % timer.elapsed())
 
 
 def read_modules(cfg):
