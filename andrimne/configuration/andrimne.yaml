@@ -5,7 +5,6 @@ step_modules:
   - svn_checkout
   - maven_build
   - read_version_from_pom
-  - print_version
   - set_permissions
   - upload_files
   - redeploy
@@ -13,3 +12,4 @@ step_modules:
   - start_servers
 
 maven_flags: -B -q -ff
+maven_pom_namespace: 'http://maven.apache.org/POM/4.0.0'

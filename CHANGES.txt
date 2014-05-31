@@ -1,0 +1,4 @@
+0.0.2:
+- Fix charset in Maven logging.
+- Make logging less fragile: It won't stop the running command.
+- Implement support for reading program version from a maven pom.xml.
