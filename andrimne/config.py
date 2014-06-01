@@ -1,15 +1,26 @@
 from pkg_resources import resource_stream
 import yaml
 
-MAIN_CONFIG_FILE = ['andrimne', 'configuration/andrimne.yaml']
+_MAIN_CONFIG_FILE = ['andrimne', 'configuration/andrimne.yaml']
+
+_config = {}
 
 
 def read_main_configuration():
-    return yaml.load(resource_stream(*MAIN_CONFIG_FILE))
+    global _config
+    _config = yaml.load(resource_stream(*_MAIN_CONFIG_FILE))
 
 
-def config_or_default(config, value, default):
+def read(key):
+    return _config[key]
+
+
+def store(key, value):
+    _config[key] = value
+
+
+def read_or_default(key, default=None):
     try:
-        return config[value]
+        return _config[key]
     except KeyError:
         return default

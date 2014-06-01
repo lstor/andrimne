@@ -1,14 +1,14 @@
 from andrimne.common import run_shell_command
-from andrimne.config import config_or_default
+import andrimne.config as config
 import logging
 
 
-def run(cfg):
+def run():
     logging.info('setting permissions')
 
-    version = cfg['version']
-    prefix = cfg['module_prefix']
-    modules = config_or_default(cfg, 'code_modules', [])
+    version = config.read('version')
+    prefix = config.read('module_prefix')
+    modules = config.read_or_default('code_modules', [])
 
     for module in modules:
         filename = u'{0}{1}/target/{0}{1}-{2}.war'.format(prefix, module, version)

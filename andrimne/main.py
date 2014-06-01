@@ -9,16 +9,16 @@ import sys
 
 def main():
     timer = Timer()
-    cfg = config.read_main_configuration()
-    logger.configure(cfg)
+    config.read_main_configuration()
+    logger.configure()
 
-    steps = map(step_import, read_modules(cfg))
+    steps = map(step_import, read_modules())
     successful = True
 
     for step in steps:
-        print_progress(cfg)
+        print_progress()
         logging.debug('executing step \'{}\''.format(step.__name__))
-        if not execute_step(step, cfg):
+        if not execute_step(step):
             successful = False
             break
 
@@ -26,15 +26,15 @@ def main():
     sys.exit(0 if successful else 1)
 
 
-def print_progress(cfg):
-    if config.config_or_default(cfg, 'verbosity', 'verbose') == 'verbose':
+def print_progress():
+    if config.read_or_default('verbosity', 'verbose') == 'verbose':
         sys.stdout.write('.')
 
 
-def execute_step(step, cfg):
+def execute_step(step):
     # noinspection PyBroadException
     try:
-        result = step.run(cfg)
+        result = step.run()
         if result is None or result is True or result == 0:
             return True
     except Exception as e:
@@ -49,9 +49,9 @@ def log_run_completed(successful, timer):
         logging.warning('ABORTED! elapsed time was {}'.format(timer.elapsed()))
 
 
-def read_modules(cfg):
+def read_modules():
     logging.debug('reading step modules')
-    return cfg['step_modules']
+    return config.read('step_modules')
 
 
 def step_import(module_name):

@@ -1,10 +1,10 @@
-from andrimne.config import config_or_default
 from andrimne.common import run_shell_command
+import andrimne.config as config
 import logging
 
 
-def run(cfg):
+def run():
     logging.info('running maven build')
 
-    flags = config_or_default(cfg, 'maven_flags', '')
+    flags = config.read_or_default('maven_flags', '')
     run_shell_command('mvn {} clean install'.format(flags), charset='latin-1')

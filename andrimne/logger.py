@@ -1,13 +1,13 @@
-from andrimne.config import config_or_default
+from andrimne.config import read_or_default
 import logging
 
 
-def configure(config):
+def configure():
     log_config = {
-        'filename': config_or_default(config, 'logfile', 'log.txt'),
-        'level': config_or_default(config, 'loglevel', logging.WARNING),
-        'datefmt': config_or_default(config, 'log_timeformat', '%H:%M:%S - %d/%m/%Y'),
-        'format': config_or_default(config, 'log_format', '%(asctime)s - %(name)s - %(levelname)-10s %(message)s'),
+        'filename': read_or_default('logfile', 'log.txt'),
+        'level': read_or_default('loglevel', logging.WARNING),
+        'datefmt': read_or_default('log_timeformat', '%H:%M:%S - %d/%m/%Y'),
+        'format': read_or_default('log_format', '%(asctime)s - %(name)s - %(levelname)-10s %(message)s'),
     }
 
     logging.basicConfig(**log_config)

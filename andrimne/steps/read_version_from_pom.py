@@ -1,4 +1,4 @@
-from andrimne.config import config_or_default
+import andrimne.config as config
 import logging
 import xml.etree.ElementTree as ElementTree
 
@@ -8,20 +8,20 @@ import xml.etree.ElementTree as ElementTree
 # If you do not have full control over your XML file, *do not* use this step!
 
 
-def run(cfg):
+def run():
     logging.info('reading version from pom')
 
-    namespace = config_or_default(cfg, 'maven_pom_namespace', '')
-    version_tag_name = config_or_default(cfg, 'version_tag_name', 'version')
-    pom_file = config_or_default(cfg, 'main_pom', 'pom.xml')
+    namespace = config.read_or_default('maven_pom_namespace', '')
+    version_tag_name = config.read_or_default('version_tag_name', 'version')
+    pom_file = config.read_or_default('main_pom', 'pom.xml')
 
     try:
-        find_and_store_version(cfg, version_tag_name, namespace, pom_file)
+        find_and_store_version(version_tag_name, namespace, pom_file)
     except (IOError, ElementTree.ParseError) as e:
         logging.error('could not read version: {}'.format(e))
 
 
-def find_and_store_version(cfg, version_tag_name, namespace, pom_file):
+def find_and_store_version(version_tag_name, namespace, pom_file):
     version_tag = '{{{0}}}{1}'.format(namespace, version_tag_name)
 
     root = ElementTree.parse(pom_file).getroot()
@@ -30,4 +30,4 @@ def find_and_store_version(cfg, version_tag_name, namespace, pom_file):
 
     version = root.findtext(version_tag)
     assert version is not None
-    cfg['version'] = version
+    config.store('version', version)
