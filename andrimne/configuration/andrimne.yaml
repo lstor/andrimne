@@ -13,3 +13,10 @@ step_modules:
 
 maven_flags: -B -q -ff
 maven_pom_namespace: 'http://maven.apache.org/POM/4.0.0'
+
+module_prefix: 'digitalekanaler-'
+code_modules:
+  - admin
+  - backoffice
+  - tjenester
+  - solr

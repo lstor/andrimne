@@ -30,4 +30,4 @@ def find_and_store_version(version_tag_name, namespace, pom_file):
 
     version = root.findtext(version_tag)
     assert version is not None
-    config.store('version', version)
+    config.store['version'] = version
