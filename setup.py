@@ -39,6 +39,7 @@ setup(
         'andrimne': ['configuration/andrimne.yaml'],
     },
 
+    test_suite='tests',
     entry_points={
         'console_scripts': [
             'andrimne=andrimne.main:main',
