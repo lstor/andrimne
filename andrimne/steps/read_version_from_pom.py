@@ -1,6 +1,7 @@
 import andrimne.config as config
-import logging
 import xml.etree.ElementTree as ElementTree
+
+import logging
 
 ### WARNING
 #
@@ -9,8 +10,6 @@ import xml.etree.ElementTree as ElementTree
 
 
 def run():
-    logging.info('reading version from pom')
-
     namespace = config.read_or_default('maven_pom_namespace', '')
     version_tag_name = config.read_or_default('version_tag_name', 'version')
     pom_file = config.read_or_default('main_pom', 'pom.xml')

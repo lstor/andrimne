@@ -18,3 +18,10 @@ def configure():
     logging.info('STARTING ...')
     logging.info('---------------------------------------------------------------------------')
     logging.info('')
+
+
+def log_step(step_name):
+    message = 'step: {}'.format(step_name.replace('_', ' '))
+    logging.info(message)
+
+

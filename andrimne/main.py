@@ -17,7 +17,7 @@ def main():
 
     for step in steps:
         print_progress()
-        logging.debug('executing step \'{}\''.format(step.__name__))
+        logger.log_step(step.__name__)
         if not execute_step(step):
             successful = False
             break
