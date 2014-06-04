@@ -27,7 +27,7 @@ Configure andrimne for your use in ``config/andrimne.yaml``. The main area of in
     - maven_build
     - redeploy
 
-Each *step* is a python module (i.e. a file), that has at least a ``run(config)`` function. These steps are run in the
+Each *step* is a python module (i.e. a file), that has at least a ``run()`` function. These steps are run in the
 order they appear in the list.
 
 
