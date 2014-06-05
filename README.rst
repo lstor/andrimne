@@ -15,6 +15,15 @@ Synopsis
 Andrimne is meant to be a plug-in-enabled tool-running-platform for automating build- and deployment-related tasks.
 
 
+Installation
+------------
+
+Install from `PyPI <https://pypi.python.org/pypi/andrimne/0.0.1>`_:
+
+::
+
+    pip install andrimne
+
 How to Use
 ----------
 
@@ -58,3 +67,4 @@ The Name
     Andhrímnir (Old Norse "sooty"[1]) is the chef of the Æsir and einherjar in Norse mythology. Every day in Valhalla,
     he slaughters the beast Sæhrímnir and cooks it in Eldhrímnir, his cauldron. At night, Sæhrímnir is restored to life
     to be eaten again the next day. He also makes the Æsir's mead from the milk of Heiðrún, a goat.
+    
